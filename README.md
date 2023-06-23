@@ -44,3 +44,11 @@ CNN을 통한 경량 딥러닝 알고리즘을 다루고 있습니다.
 - MnasNet
 
 * 추후 연구를 계속하면서 새로운 모델 추가하도록 하겠습니다.
+
+<참고자료>
+
+---
+
+[[딥러닝 모델 경량화] 딥러닝 경량화 기술 동향](https://sotudy.tistory.com/12)
+
+[더 효율적이고 경량화된 Convolution Neural Network 설계 기법](https://www.youtube.com/watch?v=ijvZsH4TlZc)
