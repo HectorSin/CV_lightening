@@ -15,6 +15,8 @@ Xception은 깊이별 분산 컨볼루션(Depthwise Seprable Convolution)을 활
 
 ### 1. Depthwise Seperable Convolution
 
+![Depth-wise-Seperable-Convolution](./img/Depthwise-Seperable-Convolution.png)
+
 #### 1. 깊이별 컨볼루션(Depth-wise Convolution)
 
 Depthwise convolution은 각 입력 채널에 대하여 3 \* 3 conv 하나의 필터가 연산을 수행하여 하나의 피쳐맵을 생성합니다. 입력 채널 수가 M개이면 M개의 피쳐맵을 생성하는 것입니다. 각 채널마다 독립적으로 연산을 수행하여 spatial correlation을 계산하는 역할을 합니다.
