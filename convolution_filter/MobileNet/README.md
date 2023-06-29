@@ -1,16 +1,33 @@
-# MobileNet
+# MobileNet: Efficient Convolutional Neural Networks for Mobile Vision Application
 
 MobileNet은 Google에서 개발한 컴퓨터 비전을 위한 경량화된 딥 러닝 모델 아키텍처입니다.
 이 모델은 효율성과 성능 사이의 균형을 맞추기 위해 설계되었으며, 특히 모바일 및 임베디드 비전 애플리케이션에 적합합니다.
 
+핸드폰이나 임베디드 시스템 같이 저용량 메모리 환경에 딥러닝을 적용하기 위해 모델 경량화가 필요하기 때문에 경량화에 집중하였고, 메모리가 제한된 환경에서 MobileNet을 최적으로 맞추기 위해 latency와 accuracy라는 파라미터의 균형을 조절합니다.
+
 ## 주요 기술
 
 MobileNet은 두 가지 주요 기술, 즉 **깊이별 컨볼루션(depthwise convolution)**과 **점별 컨볼루션(pointwise convolution)**을 사용하여 모델의 크기와 계산량을 줄입니다.
+Xception은 깊이별 분산 컨볼루션(Depthwise Seprable Convolution)을 활용하여 감소한 파라미터 수 만큼 킁을 쌓아 성능을 높이는데 집중하였습니다. 반대로 MobileNet은 이를 활용하여 경량화에 집중하였습니다.
 이러한 모델이 더 적은 리소스를 사용하면서도 높은 정확도를 유지할 수 있게 해줍니다.
 
-### 깊이별 컨볼루션(depthwise convolution)
+경량화 방법과 그 구조를 이해하기 위해 Depthwise Separable Convolution에 대한 개념이 필요합니다.
 
-### 점별 컨볼루션(pointwise convolution)
+### 1. Depthwise Seperable Convolution
+
+#### 1. 깊이별 컨볼루션(Depth-wise Convolution)
+
+Depthwise convolution은 각 입력 채널에 대하여 3 \* 3 conv 하나의 필터가 연산을 수행하여 하나의 피쳐맵을 생성합니다. 입력 채널 수가 M개이면 M개의 피쳐맵을 생성하는 것입니다. 각 채널마다 독립적으로 연산을 수행하여 spatial correlation을 계산하는 역할을 합니다.
+
+1. Standard Convolution
+   ![Standard Convolution](./img/standard-convolution.png)
+
+2. Depth-wise Convolution
+   ![Depth-wise Convolution](./img/depth-wise-convolution.png)
+
+일반 Standard Convolution(SC)과의 차이즘은 SC는 입력데이터의 채널별로 특징들을 뽑아서 하나의 Feature map을 만들어 냅니다. 하지만 Depth-wise Convolution은 한번 통과하고 나면, 하나로 병합되지 않고 각 채널별로 각각 Feature Map이 됩니다.
+
+#### 2. 점별 컨볼루션(pointwise convolution)
 
 ## 버전(발전 방향)
 
@@ -32,12 +49,11 @@ MobileNetV3는 2019년에 발표되었으며, 이 모델은 자동화된 검색 
 
 ## 인용
 
-[Mobile-Former: Bridging MobileNet and Transformer](https://arxiv.org/abs/2108.05895)
-이 논문에서는 MobileNet과 Transformer 사이의 두 가지 방향의 다리를 설계합니다. 이 구조는 MobileNet의 로컬 처리와 Transformer의 글로벌 상호작용의 장점을 활용합니다.
+[Mobile-Former: Bridging MobileNet and Transformer](https://arxiv.org/abs/2108.05895) 이 논문에서는 MobileNet과 Transformer 사이의 두 가지 방향의 다리를 설계합니다. 이 구조는 MobileNet의 로컬 처리와 Transformer의 글로벌 상호작용의 장점을 활용합니다.
 
-[A Novel Image Classification Approach via Dense-MobileNet Models](https://www.hindawi.com/journals/misy/2020/7602384/)
-이 논문에서는 Dense-MobileNet 모델을 통한 새로운 이미지 분류 방법을 제안합니다. 이 방법은 네트워크의 매개변수 수를 더욱 줄이고 분류 정확도를 향상시킵니다.
+[A Novel Image Classification Approach via Dense-MobileNet Models](https://www.hindawi.com/journals/misy/2020/7602384/) 이 논문에서는 Dense-MobileNet 모델을 통한 새로운 이미지 분류 방법을 제안합니다. 이 방법은 네트워크의 매개변수 수를 더욱 줄이고 분류 정확도를 향상시킵니다.
 
 ## 참고자료
 
-1. []()
+1. [[논문 읽기] MobileNet(2017) 리뷰, Efficient Convolutional Neural Networks for Mobile Vision](https://deep-learning-study.tistory.com/532)
+2. [[딥러닝] Depth-wise Separable Convolution 원리(Pytorch 구현)](https://coding-yoon.tistory.com/122)
