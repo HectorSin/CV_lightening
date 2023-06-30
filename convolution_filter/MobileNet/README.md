@@ -39,6 +39,17 @@ PW는 1\*1 크기의 커널을 사용하는 컨볼루션입니다. 이것은 기
 
 > [1\*1 Convolution의 역할을 자세하게 알고 싶다면 이 글을 참고하세요](https://coding-yoon.tistory.com/116)
 
+PW는 두가지 특성을 가지고 있습니다.
+
+1. **공간적인 특성**을 가지고 있지 않다
+2. 연산량이 가장 적게 필요로 하기 때문에, **Feature Map 개수를 조절**할 때 사용된다.
+
+## Architecture
+
+[MobileNet Architecture](./img/MN-Archi.png)
+
+첫 번째 conv를 제외하고 depthwise separable convolution을 사용합니다. 마지막 FC 레이어를 제외하고 모든 레이어에 BN, ReLU를 사용합니다. Down-sampling은 depthwise convolution과 첫 번째 conv layer에서 수행합니다. 총 28 레이어를 갖습니다.
+
 ## 버전(발전 방향)
 
 ### MobileNetV1
@@ -67,3 +78,4 @@ MobileNetV3는 2019년에 발표되었으며, 이 모델은 자동화된 검색 
 
 1. [[논문 읽기] MobileNet(2017) 리뷰, Efficient Convolutional Neural Networks for Mobile Vision](https://deep-learning-study.tistory.com/532)
 2. [[딥러닝] Depth-wise Separable Convolution 원리(Pytorch 구현)](https://coding-yoon.tistory.com/122)
+3. [CONV2D - PyTorch](https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html?highlight=conv2d#torch.nn.Conv2d)
