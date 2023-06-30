@@ -29,7 +29,15 @@ Depthwise convolution은 각 입력 채널에 대하여 3 \* 3 conv 하나의 �
 
 일반 Standard Convolution(SC)과의 차이즘은 SC는 입력데이터의 채널별로 특징들을 뽑아서 하나의 Feature map을 만들어 냅니다. 하지만 Depth-wise Convolution은 한번 통과하고 나면, 하나로 병합되지 않고 각 채널별로 각각 Feature Map이 됩니다.
 
-#### 2. 점별 컨볼루션(pointwise convolution)
+3 \* Feature Map = Kernal Size \* Kernel Sizee \* 3
+
+#### 2. 1\*1 점별 컨볼루션(PointWise convolution)
+
+> Seperable Convolution(깊이별 컨볼루션, SC)과 Pointwise Convolution(1\*1 컨볼루션, PW)개념이 Depthwise Seperable Convolution을 다룬 블로그별로 다르게 명시하는데 Seperable Convolution은 Pointwise Convolution을 포함하는 더 큰 개념입니다.
+
+PW는 1\*1 크기의 커널을 사용하는 컨볼루션입니다. 이것은 기본적으로 각 위치에서 모든 입력 채널을 통해 정보를 결합하는 역할을 합니다. 이는 채널 간의 상호작용을 가능하게 하며, 네트워크의 표현력을 높이는 데 도움이 됩니다.
+
+> [1\*1 Convolution의 역할을 자세하게 알고 싶다면 이 글을 참고하세요](https://coding-yoon.tistory.com/116)
 
 ## 버전(발전 방향)
 
