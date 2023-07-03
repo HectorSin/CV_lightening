@@ -42,7 +42,7 @@ Depthwise convolution은 각 입력 채널에 대하여 3 \* 3 conv 하나의 �
 
 이전 Depth-Wise Convolution에서는 공간방향의 convolution을 진행한 후, channel 방향의 convolution을 진행하는가/진행하지 않는가로 나뉘었던 결과물이었습니다.
 
-이와 비슷하지만 Poinwise Convolution(PC)은 공간방향의 convolution은 진행하지 않고, 채널 방향의 convolution을 진행하는 것입니다.
+이와 비슷하지만 Pointwise Convolution(PC)은 공간방향의 convolution은 진행하지 않고, 채널 방향의 convolution을 진행하는 것입니다.
 
 PW는 1\*1 크기의 커널을 사용하는 컨볼루션입니다. 이것은 기본적으로 각 위치에서 모든 입력 채널을 통해 정보를 결합하는 역할을 합니다. 이는 채널 간의 상호작용을 가능하게 하며, 네트워크의 표현력을 높이는 데 도움이 됩니다.
 
@@ -78,6 +78,8 @@ MobileNetV2는 2018년에 발표되었으며, 이 모델은 이전 버전에 비
 ### MobileNetV3
 
 MobileNetV3는 2019년에 발표되었으며, 이 모델은 자동화된 검색 알고리즘을 사용하여 아키텍처를 최적화했습니다. 이 알고리즘은 모델의 성능을 더욱 향상시키는 데 도움이 되었습니다.
+
+모바일 친화적인 검색 공간에서 지연 시간을 고려한 아키텍처 검색을 사용하여 효율적인 객체 탐지 모델을 생성합니다.
 
 ## 인용
 
