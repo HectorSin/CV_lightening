@@ -48,7 +48,7 @@ PW는 1\*1 크기의 커널을 사용하는 컨볼루션입니다. 이것은 기
 
 > [1\*1 Convolution의 역할을 자세하게 알고 싶다면 이 글을 참고하세요](https://coding-yoon.tistory.com/116)
 
-[1\*1 Convolution](./img/point_conv.png)
+![1*1 Convolution](./img/point_conv.png)
 
 PW는 두가지 특성을 가지고 있습니다.
 
@@ -57,7 +57,7 @@ PW는 두가지 특성을 가지고 있습니다.
 
 ## Architecture
 
-[MobileNet Architecture](./img/MN-Archi.png)
+![MobileNet Architecture](./img/MN-Archi.png)
 
 첫 번째 conv를 제외하고 depthwise separable convolution을 사용합니다. 마지막 FC 레이어를 제외하고 모든 레이어에 BN, ReLU를 사용합니다. Down-sampling은 depthwise convolution과 첫 번째 conv layer에서 수행합니다. 총 28 레이어를 갖습니다.
 
