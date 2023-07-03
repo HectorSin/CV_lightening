@@ -7,8 +7,9 @@ MobileNet은 Google에서 개발한 컴퓨터 비전을 위한 경량화된 딥 
 
 ## 주요 기술
 
-MobileNet은 Depthwise Seperable Convolution을 사용합니다. 이는 두 가지 주요 기술, 즉 **깊이별 컨볼루션(depthwise convolution)**과 **점별 컨볼루션(pointwise convolution)**을 사용하여 모델의 크기와 계산량을 줄입니다.
-Xception은 깊이별 분산 컨볼루션(Depthwise Seprable Convolution)을 활용하여 감소한 파라미터 수 만큼 층을 쌓아 성능을 높이는데 집중하였습니다. 반대로 MobileNet은 이를 활용하여 경량화에 집중하였습니다.
+MobileNet은 깊이별 분산 컨볼루션(Depthwise Seperable Convolution)을 사용합니다. 이는 두 가지 주요 기술, **깊이별 컨볼루션(depthwise convolution)**과 **점별 컨볼루션(pointwise convolution)**을 사용하여 모델의 크기와 계산량을 줄입니다.
+
+Xception이라는 모델은 깊이별 분산 컨볼루션(Depthwise Seprable Convolution)을 활용하여 감소한 파라미터 수 만큼 층을 쌓아 성능을 높이는데 집중하였습니다. 반대로 MobileNet은 이를 활용하여 경량화에 집중하였습니다.
 이러한 모델이 더 적은 리소스를 사용하면서도 높은 정확도를 유지할 수 있게 해줍니다.
 
 경량화 방법과 그 구조를 이해하기 위해 Depthwise Separable Convolution에 대한 개념이 필요합니다.
@@ -27,7 +28,7 @@ Depthwise convolution은 각 입력 채널에 대하여 3 \* 3 conv 하나의 �
 2. Depth-wise Convolution
    ![Depth-wise Convolution](./img/depth-wise-convolution.png)
 
-일반 Standard Convolution(SC)과의 차이즘은 SC는 입력데이터의 채널별로 특징들을 뽑아서 하나의 Feature map을 만들어 냅니다. 하지만 Depth-wise Convolution은 한번 통과하고 나면, 하나로 병합되지 않고 각 채널별로 각각 Feature Map이 됩니다.
+일반 Standard Convolution(SC)과의 차이점은 SC은 입력데이터의 채널별로 특징들을 뽑아서 하나의 Feature map을 만들어 냅니다. 하지만 Depth-wise Convolution은 한번 통과하고 나면, 하나로 병합되지 않고 각 채널별로 각각 Feature Map이 됩니다.
 
 3 \* Feature Map = Kernal Size \* Kernel Sizee \* 3
 
@@ -72,6 +73,8 @@ MobileNet의 첫 번째 버전인 MobileNetV1은 2017년에 소개되었습니�
 MobileNetV2는 2018년에 발표되었으며, 이 모델은 이전 버전에 비해서 성능을 향상 시키기 위해 잔차 연결(residual connection)과 선형 병목(linear bottleneck)을 도입했습니다. 이러한 기술은 모델의 효율성을 높이고, 정보의 손실을 최소화하는 데 도움이 되었습니다.
 
 #### 잔차 연결(residual connection)
+
+![residual_block](./img/residual_block.png)
 
 #### 선형 병목(linear bottleneck)
 
