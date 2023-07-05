@@ -8,19 +8,19 @@ EfficientDet은 다양한 객체 탐지 작업에 활용될 수 있습니다. �
 
 1. 자율주행: 자율주행 자동차는 주변 환경을 이해하고 안전하게 운전하기 위해 객체 탐지 기술을 필요로 합니다. EfficientDet는 차량, 보행자, 자전거 등의 객체를 빠르고 정확하게 탐지할 수 있습니다.
 
-[자율주행 자동차](./img/auto_mobile.jpg)
+![자율주행 자동차](./img/auto_mobile.jpg)
 
 2. 보안 및 감시: 보안 카메라와 드론은 사람, 차량, 동물 등의 움직임을 탐지하고 추적하는 데 객체 탐지 기술을 사용합니다. EfficientDet는 실시간으로 높은 정확도로 객체를 탐지할 수 있기 때문에, 이러한 시스템에서 널리 사용될 수 있습니다.
 
-[cctv](./img/cctv.jpg)
+![cctv](./img/cctv.jpg)
 
 3. 의료 이미징: 객체 탐지 기술은 의료 이미지 분석에서도 중요한 역할을 합니다. 예를 들어, EfficientDet는 MRI나 CT 스캔에서 병변이나 종양을 탐지하는 데 사용될 수 있습니다.
 
-[health](./img/health_img.png)
+![health](./img/health_img.png)
 
 4. 공간 인식: 위성 이미지 분석에서, EfficientDet는 건물, 도로, 농지 등의 객체를 탐지하는 데 사용될 수 있습니다. 이는 도시 계획, 재난 관리, 환경 모니터링 등의 분야에서 중요한 역할을 합니다.
 
-[공간 인식](./img/space_img.png)
+![공간 인식](./img/space_img.png)
 
 ## 연구 배경
 
@@ -32,7 +32,7 @@ EfficientDet의 연구자들은 이러한 문제를 해결하기 위해, **효�
 
 그런상황에서도 EfficientDet은 기존 모델들의 성능을 크게 상회하는, 특히 연산량, 연산 속도 관점에서는 굉장히 효율적인 모델을 제안 했습니다.
 
-[ED 실험결과](./img/efficientDet_result.png)
+![ED 실험결과](./img/efficientDet_result.png)
 
 ## Main Challenge
 
