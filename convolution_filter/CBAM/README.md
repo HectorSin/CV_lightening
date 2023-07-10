@@ -91,3 +91,5 @@ Arrangement of attention modules. Given an input image, two attention modules, c
 # 참고 자료
 
 1. [[논문 읽기] CBAM(2018), Convolutional Block Attention Module](https://deep-learning-study.tistory.com/666)
+
+2. [CBAM: Convolutional Block Attention Module](https://arxiv.org/abs/1807.06521)
