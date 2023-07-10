@@ -136,13 +136,33 @@ CBAM은 위 세가지 요소를 제외하고 **attention module**을 사용하�
 
 정리하자면 CBAM은 input feature에서 채널, 공간 정보에 대한 attention map을 생성하여 input feature map에 곱하여 모델이 어디에 집중해야 하는지에 대한 정보를 제공합니다. 채널별 가중치를 계산하는 SENet과 공간 픽셀별 가중치를 계산하는 residual attention network의 개념을 통합한 것으로 생각해볼 수 있습니다. 참고로 SENet은 적은 연산량으로 채널별 가중치를 계산하여 현재도 많이 이용하고 있지만, residual attention network의 연산량은 상당하여 이용하지 않고 있습니다.
 
+## CBAM(Convolutional Block Attention Module)
+
+CBAM은 chaneel attention module과 spatial attention module로 이루어져 있습니다. channel attention module은 input feature에서 **1D channel attention map**을 생성합니다.
+
+생성한 1D channel attention map에 input feature을 곱하여 F'를 생성합니다.
+
+spatial attention module은 F'를 입력 받아 2D sptial attention map을 생성합니다.
+
+생성한 2D spatial attention map을 F에 곱하여 F'를 생성합니다.
+
+최종적으로 F는 attention이 적용되어 중요한 정보를 강조하고, 불필요한 noise를 억제한 feature map이 됩니다.
+
 ## Channel attention module
+
+![Channel attention module](./img/channel_a_module.png)
+
+Channel attention module은 input feature F의 내부 채널 관계를 활용하여 channel attention map을 생성합니다. Channel attention은 주어진 입력값에서 무엇이 중요한지 집중합니다. 효과적으로 계산하기 위해 input feature map의 spatial 차원을 1x1로 압축합니다. 즉 Cx1x1가 되는 것입니다. 또한 spatial 정보를 통합하기 위해 average pooling과 max pooling을 적용합니다. 두 pooling 연산을 함께 사용하면 성능이 향상됩니다.
 
 ## Spatial attention module
 
 # 용어 정리
 
 1. [Attention Map](../../basic_concept/attention_map/README.md)
+
+2. [Average Pooling](../../basic_concept/average_pool/README.md)
+
+3. [Max Pooling](../../basic_concept/max_pool/)
 
 # 참고 자료
 
