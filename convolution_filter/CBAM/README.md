@@ -154,7 +154,13 @@ spatial attention module은 F'를 입력 받아 2D sptial attention map을 생�
 
 Channel attention module은 input feature F의 내부 채널 관계를 활용하여 channel attention map을 생성합니다. Channel attention은 주어진 입력값에서 무엇이 중요한지 집중합니다. 효과적으로 계산하기 위해 input feature map의 spatial 차원을 1x1로 압축합니다. 즉 Cx1x1가 되는 것입니다. 또한 spatial 정보를 통합하기 위해 average pooling과 max pooling을 적용합니다. 두 pooling 연산을 함께 사용하면 성능이 향상됩니다.
 
+Channel Attention module의 동작 원리는 avg pooling과 max pooling을 모두 사용하여 feature map의 공간 정보를 통합하여 F_avg와 F_max를 생성합니다. 각각의 F_avg와 F_max를 MLP에 전달하여 각각의 attention map을 생성한 후에 둘을 더하여 최종 channel attention map을 생성합니다.
+
 ## Spatial attention module
+
+![Spatial attention module](./img/spatial_a_module.png)
+
+Spatial attention module은 **어디에 중요한 정보가 있는지 집중**하도록 합니다. Channel attention map과 input feature map을 곱하여 생성한 F'에서 채널을 축으로 Maxpool과 Avgpool을 적용해 생성한 1xHxW의 F_avg와 F_max 두 값을 concatenate 합니다. 여기에 7x7 conv 연산을 적용하여 spatial attention map을 생성합니다.
 
 # 용어 정리
 
