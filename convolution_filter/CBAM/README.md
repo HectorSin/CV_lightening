@@ -130,6 +130,20 @@ approach to improve representation power of CNN networks. We apply attentionbase
 
 # 논문 정리
 
+일반적으로 CNN 모델의 성능을 향상시키는 방법은 depth, width, cardinality 세 가지 요소가 있습니다. depth는 층을 의미하고, width는 필터 수를 의미하며 cardinality는 resnext에서 제안된 group convolution에서 group의 수를 의미합니다.
+
+CBAM은 위 세가지 요소를 제외하고 **attention module**을 사용하여 모델의 성능을 향상시킵니다. channel attention module과 spatial attention module로 구성되어 있으며, 각각의 attention module은 채널과 공간 각각에 대한 **attention map을 생성**합니다. 생성한 attention map을 input feature map에 곱하여 필요없는 정보는 억제하고 중요한 정보는 강조합니다. CBAM은 무시할만한 작은 연산량으로 CNN 구조에 적용할 수 있도록 설계되었습니다. 또한 여러 모델에 적용하여 해당 모델의 성능이 향상되는 것을 실험으로 증명합니다.
+
+정리하자면 CBAM은 input feature에서 채널, 공간 정보에 대한 attention map을 생성하여 input feature map에 곱하여 모델이 어디에 집중해야 하는지에 대한 정보를 제공합니다. 채널별 가중치를 계산하는 SENet과 공간 픽셀별 가중치를 계산하는 residual attention network의 개념을 통합한 것으로 생각해볼 수 있습니다. 참고로 SENet은 적은 연산량으로 채널별 가중치를 계산하여 현재도 많이 이용하고 있지만, residual attention network의 연산량은 상당하여 이용하지 않고 있습니다.
+
+## Channel attention module
+
+## Spatial attention module
+
+# 용어 정리
+
+1. [Attention Map](../../basic_concept/attention_map/README.md)
+
 # 참고 자료
 
 1. [[논문 읽기] CBAM(2018), Convolutional Block Attention Module](https://deep-learning-study.tistory.com/666)
