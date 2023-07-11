@@ -175,3 +175,5 @@ Spatial attention module은 **어디에 중요한 정보가 있는지 집중**�
 1. [[논문 읽기] CBAM(2018), Convolutional Block Attention Module](https://deep-learning-study.tistory.com/666)
 
 2. [CBAM: Convolutional Block Attention Module](https://arxiv.org/abs/1807.06521)
+
+3. [[논문 리뷰] CBAM 설명 (Convolutional Block Attention Module)(2018)](https://inhovation97.tistory.com/63)
