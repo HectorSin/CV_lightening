@@ -50,13 +50,67 @@ attention layer를 통과한 값들은 fully connected feed-foward network를 �
 
 ## Positional Encoding
 
-# 모델 정리
+![PE](./img/Positional_encoding.png)
 
-# 훈련
+우리는 위에서 단어가 인코더 블록에 들어가기 전에 embedding vector로 변환됨을 보았습니다. 사실 여기에 한가지가 더 더해진채 인코더 블록에 입력되는데, 그것은 바로 positional encoding입니다. 여태까지 과정을 잘 복기해보면 단어의 위치정보, 즉 단어들의 순서는 어떤지에 대한 정보가 연산과정 어디에도 포함되지 않았음을 알 수 있습니다. 문장의 뜻을 이해함에 있어 단어의 순서는 중요한 정보이므로 Transformer 모델은 이를 포함하고자 하였습니다.
 
-# 결과
+![PV](./img/positional_vector.png)
+
+Positional encoding vector를 하기 위한 함수는 여러 가지가 있지만 이 논문에서는 sin함수와 cos함수의 합으로 표현(그림x 상단)하였습니다. 그 이유는 함수의 특성상 특정 위치에 대한 positional vector는 다른 위치에 대한 positional vector의 합으로 표현할 수 있기 때문에 모델이 학습당시 보지 못한 길이의 긴 문장을 만나도 대응할 수 있게 되기 때문입니다.
+
+## Decoder Block
+
+그림3에서 알 수 있듯이, 인코더 블록과 디코더 블록은 비슷하지만 약간 다른 구조를 가지고 있습니다.
+
+![Decoder](./img/decoder.gif)
+
+먼저 self-attention시 현재 위치의 이전 위치에 대해서만 attention할 수 있도록 이후 위치에 대해서는 -∞로 마스킹을 했다. 또한 이렇게 통과된 vector중 query만 가져오고, key와 value vector는 인코더 블록의 출력을 가져온다.
+
+![DO](./img/decoder_output.png)
+
+인코더와 마찬가지로 6개의 블록을 통과하면 그 출력은 FCN(Fully Connected Network)과 Softmax를 거쳐 학습된 단어 데이터베이스 중 가장 관계가 깊어보이는 단어를 출력하게 됩니다.
+
+# 모델 정리(Model Summary)
+
+![TM](./img/T_model.png)
+
+![ways](./img/ways.gif)
+
+# 훈련(Train)
+
+이제 구체적인 학습과정을 알아보겠습니다. 우선 loss function을 이해하기 위해서 단순한 예를 들어, 프랑스 단어 'merci'(감사하다)를 영어로 번역하는 상황을 가정해보겠습니다. 그리고 학습 단계전에 미리 데이터 전처리를 통해 만들 수 있는 단어 데이터베이스에는 <a, am, I, thanks, students, <eos>> 6가지 단어가 있다고 가정합니다.
+
+![loss_calc](./img/thanks.png)
+
+처음에는 전혀 학습이 되지 않을 상태이기에 모든 단어에 대해 비슷한 확률값이 나올 것입니다. 그 출력과 정답 vector의 차이를 backpropergation하여 학습이 진행되면, 점점 merci 입력에 대해 thanks 출력이 나올 확률이 높아지게 됩니다.
+
+이제 조금 더 복잡한 예시로 프랑스어 문장 "je suis étudiant" (나는 학생이다)에 대한 학습 과정을 보겠습니다.
+
+![diff](./img/diff.png)
+
+target vector가 단어들의 list로 바뀌었을 뿐, 같은 과정을 거칩니다.
+
+그런데 다음 단어를 예측할 때, 그자리에 올 단어 중 무조건 가장 높은 확률을 가진 단어만을 골라나가는 것이 올바른 예측방법일까? 가령, 산을 오른다고 가정했을 때, 매순간 무조건 가장 경사가 급한 방향으로만 가는 것이 가장 빨리 정상에 도달하는 방법일까?
+
+![TS](./img/timestep.png)
+
+물론 그렇지 않습니다. 당장 눈앞에 경사가 급한 방향으로 간다해도 사실 그 방향은 멀리 보면 골짜기로 이어져 있을 수도 있는 것입니다. 비슷한 원리로 Transformer에서도 정답 문장을 예측할 때 각 위치별로 n개의 확률이 높은 단어 후보들에 대해 m번째 timestep까지의 경우를 모두 계산하면서 정답을 찾아갑니다. 이러한 방식을 Beam search라고 하며, n(beam size)과 m(top beams)은 우리가 학습전에 미리 설정할 수 있는 hyperparameter입니다.
+
+![BS](./img/beamsearch.png)
+
+# 결과 (Result)
+
+![RESULT](./img/result.png)
+
+Transformer는 기존의 CNN, RNN 구조를 전혀 쓰지 않고도 등장하자마자 WMT 2014 English-to-German translation, WMT 2014 English-to-French translation 두 번역 부분에서 SOTA를 차지해서 NLP 연구자들에게 충격을 주었습니다.
+
+## Visualization of an attention layer
+
+![VAL](./img/attention_layer.png)
 
 # 결론
+
+지금까지 Transformer에 대해 알아보았습니다. AlexNet이 2012년 ImageNet 영상분류 문제에서 압도적인 SOTA를 달성했을 때 사람들이 앞다투어 CNN을 파고들었습니다. Transformer는 정도의 차이는 있을지언정, 기존 문제에 대해 완전히 새로운 해결책으로 attention을 보급했다는 점에서 가히 AlexNet에 비견할만하다고 생각합니다. 현재 BERT, DETR, GPT-3 등 각 분야에서 Transformer를 베이스로 한 새로운 모델들이 쏟아져나오고 있으며 앞으로도 한동안은 그럴 것 같습니다.
 
 # 참고자료
 
@@ -64,3 +118,5 @@ attention layer를 통과한 값들은 fully connected feed-foward network를 �
 2. [Attention Is All You Need(transformer) paper 정리](https://omicro03.medium.com/attention-is-all-you-need-transformer-paper-%EC%A0%95%EB%A6%AC-83066192d9ab)
 3. [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
 4. [Transformer Architecture: The Positional Encoding](https://kazemnejad.com/blog/transformer_architecture_positional_encoding/)
+5. [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/?ref=blog.promedius.ai)
+6. [밑바닥부터 이해하는 어텐션 메커니즘](https://glee1228.tistory.com/3)
