@@ -9,9 +9,8 @@
 1. [Domain Adaptation (DA)](./domain_adaptation/README.md) 공부
  - [[study] DA(Domain Adaptation)알아보기 기본편](https://lhw0772.medium.com/study-da-domain-adaptation-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0-%EA%B8%B0%EB%B3%B8%ED%8E%B8-4af4ab63f871) 해당 블로그 내용 기반 공부
  - [Domain Adaptation for Visual Applications - Naver Labs](https://europe.naverlabs.com/eccv-2020-domain-adaptation-tutorial/) 네이버 랩에서 제공하는 튜토리얼 공부
-2. [Multi-Modal](./multi-modal/README.md) 공부
+2. [Multi-Modal](./multi-modal/README.md) 공부 (CLIP 모델을 활용하여 다루는 모델 공부)
 3. [Source Free Domain Adaptation(SFDA)](Readme.md) 공부
-
 
 ### 참고자료
 

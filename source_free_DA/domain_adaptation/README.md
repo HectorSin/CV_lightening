@@ -18,6 +18,27 @@ Domain Shift는 학습 데이터 (Source)와 테스트 데이터 (Target) 의 Di
 
 ![Domain Shift (ECCV 2020 Domain Adaptation for Visual Applications Tutorial part 1, 8 page)](./img/domain_shift.png)
 
+다른 Domain Adaptation의 예로는 Synthetic data를 이용해서 Real data를 대비하여 학습하는 경우입니다. 요즘 게임 그래픽이 굉장히 좋아지면서 해당 데이터를 학습함으로써 실제 영상에 적용했을 때도 성능 향상이 이루어지는 경우가 많습니다. 하지만 이 경우에도 같은 양의 Real data를 사용했을 때의 성능보다는 떨어질 수 있습니다.
+
+![Synthetic Image Example for image segmentation ( ECCV 2020 Domain Adaptation for Visual Applications Tutorial part 1, 9 page)](./img/synthetic-image-example%20for%20image%20segmentation.webp)
+
+## Traditional Domain Adaptation 방식
+
+### 1. Metric Learning (Adapting Visual Category Models to New Domains , Metric Learning: Asymmetric Transformations )
+
+메트릭 학습(Metric Learning)은 머신 러닝의 하위 분야로, 데이터 포인트 간의 유사성이나 거리를 측정하는 함수를 학습하는 것을 목표로 합니다. 이러한 유사성 측정은 추천 시스템, 이미지 검색, 얼굴 인식 등 다양한 응용 분야에서 중요한 역할을 합니다.
+
+거리 기반으로 Domain adaptation을 진행합니다. 가장 기본적인 기본적인 생각으로 Source domain과 Target domain이 같은 클래스면 가깝게 만들고 다른 클래스면 멀게 만드는 것입니다. 직관적이며 확실한 방법이지만 이를 위해선 Source와 Target 모두 label이 필요합니다.
+
+![Metric learning loss function ( ECCV 2020 Domain Adaptation for Visual Applications Tutorial part 1, 17–18page)](./img/Metric%20learning%20loss%20function.webp)
+
+수식이 총 두가지 있는데 좌측의 수식은 Xs (Source domain)과 Xt(Target domain)의 거리를 구하는 공식입니다. 수식에서의 W는 X에서 Y로 가는 Transform function을 가정합니다. 우측의 수식은 source와 target의 label yi와 yj가 같은 경우에는 distance가 u보다 작도록 학습하고 (거리가 가깝도록 학습) 다른 경우에는 l보다 커지도록 학습합니다. (거리가 멀도록 학습). - 라벨이 같은 요소일 수록 거리가 가까워지게 하는 학습법이라고 생각하시면 편합니다.
+
+* [Transform function](../../basic_concept/transform_function/README.md)
+
+### 2. Subspace Representation
+
+### 3. Matching Distribution (MMD, Sample Reweighting / Selection, Transform Learning (TCA, DIP) , Hellinger Distance, SIE )
 
 ### 참고자료
 [[study] DA(Domain Adaptation)알아보기 기본편](https://lhw0772.medium.com/study-da-domain-adaptation-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0-%EA%B8%B0%EB%B3%B8%ED%8E%B8-4af4ab63f871)
