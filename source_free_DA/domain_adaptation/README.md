@@ -38,7 +38,27 @@ Domain Shift는 학습 데이터 (Source)와 테스트 데이터 (Target) 의 Di
 
 ### 2. Subspace Representation
 
+![Subspace Alignment ( ECCV 2020 Domain Adaptation for Visual Applications Tutorial part 1, 24 page)](./img/Subspace%20Alignment.webp)
+
+두 번째, Subspace Representation는 Source와 Target은 다른 [subspace](./../../basic_concept/subspace/README.md)에 놓여져 있고 이 둘의 subspace를 alignment하면 문제를 해결할 수 있다고 생각합니다. 따라서 Source subspace와 Target subspace 사이의 가능한 subspace를 sampling 혹은 Integration하여 Alignment하는 방식들이 있습니다.
+
 ### 3. Matching Distribution (MMD, Sample Reweighting / Selection, Transform Learning (TCA, DIP) , Hellinger Distance, SIE )
+
+마지막으로, Matching Distribution은 Domain Shift로 인한 Distribution 차이를 직접적으로 해결하는데 초점을 맞춥니다.
+
+![MMD ( ECCV 2020 Domain Adaptation for Visual Applications Tutorial part 1, 27 page)](img/MMD.webp)
+
+위 그림은 Maximum Mean Discrepancy (MMD)를 설명하는 그림입니다. MMD는 두 개의 Distribution의 불일치성을 표현하는 수식으로써 Source와 Target을 Hilbert space로 mapping한 다음 distribution 차이를 계산합니다. 이 계산을 위해서는 두 번째 식과 같이 Xs와 Xt 각각 Intra-class간의 distribution의 차이는 적어야 하고 Inter-class간의 distribution의 차이는 커야 한다 (-가 곱해진 형태)
+
+![Sample Re-weighting (left) , Sample Resampling (Right)](img/Sample Re-weighting (left) , Sample Resampling (Right).webp)
+
+
+
+![img](https://miro.medium.com/v2/resize:fit:1772/1*IeLNbvB5l3eFBVOx-Gdj7g.png)
+
+
+
+
 
 ### 참고자료
 [[study] DA(Domain Adaptation)알아보기 기본편](https://lhw0772.medium.com/study-da-domain-adaptation-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0-%EA%B8%B0%EB%B3%B8%ED%8E%B8-4af4ab63f871)
