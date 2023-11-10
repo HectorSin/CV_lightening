@@ -14,7 +14,7 @@ Machine learning, Deep learning에서 항상 문제가 되는 것은 무엇일�
 
 Domain Shift는 학습 데이터 (Source)와 테스트 데이터 (Target) 의 Distribution의 차이를 의미합니다. 예를 들면 같은 컵을 카메라로 찍었을 때와 캐리커쳐처럼 손으로 그렸을 때의 차이입니다. 물론 Shift가 작은 경우엔 고화질의 DSLR과 Webcam의 이미지도 Domain shift로 볼 수도 있겠습니다. 이 Domain shift가 심할수록 test data의 정확도는 떨어지게 됩니다.
 
-* [출처 - [study] DA(Domain Adaptation)알아보기 기본편](https://lhw0772.medium.com/study-da-domain-adaptation-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0-%EA%B8%B0%EB%B3%B8%ED%8E%B8-4af4ab63f871)
+- [출처 - [study] DA(Domain Adaptation)알아보기 기본편](https://lhw0772.medium.com/study-da-domain-adaptation-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0-%EA%B8%B0%EB%B3%B8%ED%8E%B8-4af4ab63f871)
 
 ![Domain Shift (ECCV 2020 Domain Adaptation for Visual Applications Tutorial part 1, 8 page)](./img/domain_shift.png)
 
@@ -34,7 +34,7 @@ Domain Shift는 학습 데이터 (Source)와 테스트 데이터 (Target) 의 Di
 
 수식이 총 두가지 있는데 좌측의 수식은 Xs (Source domain)과 Xt(Target domain)의 거리를 구하는 공식입니다. 수식에서의 W는 X에서 Y로 가는 Transform function을 가정합니다. 우측의 수식은 source와 target의 label yi와 yj가 같은 경우에는 distance가 u보다 작도록 학습하고 (거리가 가깝도록 학습) 다른 경우에는 l보다 커지도록 학습합니다. (거리가 멀도록 학습). - 라벨이 같은 요소일 수록 거리가 가까워지게 하는 학습법이라고 생각하시면 편합니다.
 
-* [Transform function](../../basic_concept/transform_function/README.md)
+- [Transform function](../../basic_concept/transform_function/README.md)
 
 ### 2. Subspace Representation
 
@@ -52,13 +52,12 @@ Domain Shift는 학습 데이터 (Source)와 테스트 데이터 (Target) 의 Di
 
 ![Sample Re-weighting (left) , Sample Resampling (Right)](img/Sample Re-weighting (left) , Sample Resampling (Right).webp)
 
-
-
 ![img](https://miro.medium.com/v2/resize:fit:1772/1*IeLNbvB5l3eFBVOx-Gdj7g.png)
 
-
-
-
-
 ### 참고자료
+
 [[study] DA(Domain Adaptation)알아보기 기본편](https://lhw0772.medium.com/study-da-domain-adaptation-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0-%EA%B8%B0%EB%B3%B8%ED%8E%B8-4af4ab63f871)
+
+### 참고 논문
+
+[Deep Visual Domain Adaptation - A Survey](https://arxiv.org/pdf/1802.03601.pdf)
